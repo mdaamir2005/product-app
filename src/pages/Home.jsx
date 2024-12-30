@@ -28,23 +28,31 @@ const Home = () => {
 
   return (
     <div>
-      <div style={{display:'flex' ,flexWrap:'wrap',gap:"10px",padding:"10px 0px 10px 50px"}}>
+      <h1 style={{textAlign:'center'}}>Products</h1>
+      <div style={{display:'flex' ,flexWrap:'wrap',gap:"10px",padding:"10px 0px 10px 50px",justifyContent:'center'}}>
         {products.map((ele, index) => {
 
           console.log(ele.title)
           return (
-            <Link to={`/detail/${ele?.id}`}key={index}>
-            <Card style={{ width: '18rem',padding:"10px" }} >
-                <Card.Title>{ele?.id}: {ele?.title}</Card.Title>
-              <Card.Img variant="top" src={ele?.images[0]} />
-              <Card.Body>
-                <Card.Text>
-                  {ele?.descriptions}
-                </Card.Text>
-              
-              </Card.Body>
-            </Card>
+
+        
+
+            <Link style={{textAlign:'center',textDecoration:"none",color:'black'}} to={`/detail/${ele?.id}`}key={index}>
+              <div style={{border:'1px solid black', width:'400px',height:'400px',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-around',boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',borderRadius:'10px',border:'none' }}>
+                <h3 style={{textAlign:'center',textDecoration:"none", outline:'none',color:'black',}}>{ele?.id}: {ele?.title}</h3>
+                <img src={ele?.images[0]} alt="" style={{height:'200px', width:'250px'}} />
+                <p style={{fontSize:'20px'}}>{ele?.price}$</p>
+
+
+
+              </div>
+
+
+
             </Link>
+
+          
+
           )
        
           })}

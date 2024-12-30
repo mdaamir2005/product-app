@@ -23,62 +23,43 @@ const {id}= useParams()
 
   return (
     <div>
-      <h1>{productDetails?.brand}</h1>
-      <div style={{display:'flex',justifyContent:'space-between'}}>
+      
+      <div style={{display:'flex'}}>
+        <div>
 <div style={{width:'40%'}}>
+  
   <img src={productDetails?.images} alt="" style={{height:"500px",width:'500px'}}/>
-  <h3 >Product Name: </h3>
-  <div>{productDetails?.title}</div>
-<h3 >Description: </h3>
-<div>{productDetails?.description}</div>
+  </div>
+<div style={{border:'1px solid black'}}>
+  <h3 >{productDetails?.title} - {productDetails.weight} GM</h3>
+<Rating name="half-rating-read" defaultValue={productDetails.rating} precision={0.5} readOnly />
+  
+<div>{productDetails.price}$</div>
+<p><span style={{fontSize:'18px',fontWeight:'bolder'}}>Brand :</span>{productDetails.brand}</p>
+<p><span style={{fontSize:'18px',fontWeight:'bolder'}}>Category :</span>  {productDetails.category}</p>
+<p> {productDetails?.description}</p> 
+<p><span style={{fontSize:'15px',fontWeight:'bolder'}}>Stocks :</span>   {productDetails?.stock}</p>
+<p><span style={{fontSize:'15px',fontWeight:'bolder'}}>Shipping Time :</span>  {productDetails.shippingInformation}</p>
+<p><span style={{fontSize:'15px',fontWeight:'bolder'}}>Warranty :</span>  {productDetails.warrantyInformation}</p>
+<p><span style={{fontSize:'15px',fontWeight:'bolder'}}>Return Days :</span>  {productDetails.returnPolicy}</p>
+<div style={{border:'1px solid black',width:'20%',textAlign:'center',cursor:'pointer'}}>Add To Cart - {productDetails.price}$ </div>
+<div style={{border:'1px solid black',width:'20%',textAlign:'center',cursor:'pointer', backgroundColor:'gold'}}>Buy It Now</div>
+</div>
 
 
 
 </div>
 
-<div style={{width:'40%'}}>
-<h2>Price</h2>
-<div>{productDetails?.price}</div>
-<h2>Available</h2>
-<div>{productDetails?.availabilityStatus}</div>
-<h2>Category</h2>
-<div>{productDetails?.category}</div>
-<h2>Rating</h2>
-<div>{productDetails?.rating}</div>
-<h2>Stock</h2>
-<div>{productDetails?.stock}</div>
-<h2>warranty</h2>
-<div>{productDetails?.warrantyInformation}</div>
-<h2>Weight</h2>
-<div>{productDetails?.weight}</div>
 </div>
 
-</div>
-<div>
-<h2>Reviews</h2>
-
-
-{productDetails?.reviews?.map((ele ,index)=>{
-return(
-<div key={index}>
-  <div>
-<p>{ele?.comment}</p>
-<Rating name="half-rating-read" defaultValue={ele.rating} precision={0.5} readOnly />
-
-</div>
-
-</div>
-
-)
 
 
 
 
-})}
 
 
 </div>
-    </div>
+    
   )
 }
 
